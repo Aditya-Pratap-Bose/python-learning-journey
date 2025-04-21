@@ -51,11 +51,11 @@ class Snake:
         
     
     def walk(self):
-
+        # body
         for i in range(self.length - 1, 0, -1):
             self.x[i] = self.x[i - 1]
             self.y[i] = self.y[i - 1]
-
+        # head
         if self.direction == 'left':
             self.x[0] -= SIZE
         if self.direction == 'right':
@@ -94,7 +94,7 @@ class Game:
         return False
     
     def play_bg_music(self):
-        pygame.mixer.music.load("resources/NONTHENSE - ALORS BRAZIL (PHONK).mp3")
+        pygame.mixer.music.load("resources/bg_music_1.mp3")
         pygame.mixer.music.play() 
    
     def play_sound(self, sound):
@@ -124,6 +124,10 @@ class Game:
                 self.play_sound("crash")
                 raise "Collision Occured"
             
+        # snake colliding with the boundries of the window
+        if not (0 <= self.snake.x[0] <= 1000 and 0 <= self.snake.y[0] <= 600):
+            self.play_sound('crash')
+            raise "Hit the boundry error"  
         
     def show_game_over(self):
         self.render_bg()
@@ -164,16 +168,16 @@ class Game:
                         pause = False
 
                     if not pause:
-                        if event.key == K_UP:
+                        if event.key == K_UP and self.snake.direction != 'down':
                             self.snake.move_up()
 
-                        if event.key == K_DOWN:
+                        if event.key == K_DOWN and self.snake.direction != 'up':
                             self.snake.move_down()
 
-                        if event.key == K_LEFT:
+                        if event.key == K_LEFT and self.snake.direction != 'right':
                             self.snake.move_left()
 
-                        if event.key == K_RIGHT:
+                        if event.key == K_RIGHT and self.snake.direction != 'left':
                             self.snake.move_right()
                     
                 elif event.type == QUIT:
@@ -186,8 +190,8 @@ class Game:
                 self.reset()
                 pause = True
 
-            time.sleep(0.3)
-            self.clock.tick(60)
+            time.sleep(0.2)
+            self.clock.tick(70)
 
 
 
