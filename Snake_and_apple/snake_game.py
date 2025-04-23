@@ -158,6 +158,7 @@ class Game:
         pause = False
 
         while running:
+            self.clock.tick(60)
             for event in pygame.event.get():
                 if event.type == KEYDOWN:
                     if event.key == K_ESCAPE:
@@ -191,7 +192,7 @@ class Game:
                 pause = True
 
             time.sleep(0.2)
-            self.clock.tick(70)
+            
 
 
 
