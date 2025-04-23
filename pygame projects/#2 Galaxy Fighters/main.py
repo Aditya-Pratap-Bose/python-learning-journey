@@ -130,7 +130,7 @@ def main():
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 run = False
-                pygame.quit()
+                break
 
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_LCTRL and len(pink_bullets) < MAX_BULLETS:
@@ -170,7 +170,6 @@ def main():
 
 
         draw(pink, blue, pink_bullets, blue_bullets, pink_health, blue_health)
+ 
 
-if __name__ == "__main__":
-    while True:
-        main()
+main()
