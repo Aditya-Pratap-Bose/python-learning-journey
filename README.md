@@ -19,7 +19,7 @@ Python is my main focus right now — learning the basics, practicing small proj
 
 - **Languages:** Python (just started , beginner-intermediate)
 - **Tools:** VS Code, Git, GitHub  
-- **Learning Areas:** pyttsx3, tkinter, file handling
+- **Learning Areas:** pygame, pyttsx3, file handling
 
 ---
 
